@@ -121,10 +121,11 @@ def update_dataSheet():
         Q=("='Estado Actual'!E%d"%(length+2-i)) #recuperados
         R=("='Estado Actual'!D%d"%(length+2-i)) #muertos
         S=("=F%d"%(length+2-i)) #moving avg
-        reversedData.append([O,P,Q,R,S])
+        T=("='Estado Actual'!c%d"%(length+2-i)) #casos nuevos
+        reversedData.append([O,P,Q,R,S,T])
         
     updateRange1='A2:I%d'%(length)
-    updateRange2='O2:S%d'%(length)
+    updateRange2='O2:T%d'%(length)
     projectionSheet.batch_update([{'range':updateRange1,'values':rows},{'range':updateRange2,'values':reversedData}],value_input_option='USER_ENTERED')
     
     if (len(projectionSheet.col_values(1))>len(dates)):
@@ -139,3 +140,5 @@ update_dataSheet()
 print("Updated! Last date added: "+sheet.acell('A2').value)
 print("\nPress enter to exit...")
 input()
+
+
