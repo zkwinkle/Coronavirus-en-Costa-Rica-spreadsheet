@@ -40,10 +40,10 @@ def erase_files(directory):
         print('Folder deleted:'+directory)
 
 
-directory = os.getcwd()+'\csv files'
+directory = os.path.join(os.getcwd(),'csv-files')
 if os.path.exists(directory):
     erase_files(directory)
-os.makedirs("csv files")
+os.makedirs("csv-files")
 print('Folder created:'+directory)
 
 
@@ -56,7 +56,7 @@ for resource in resources: #downloading of csv files
 
 print(os.listdir(directory))
 data=[]#[0]=confirmed, [1]=deaths, [2]=recovered
-for file in os.listdir(directory): #opening csv files to dictionaries
+for file in sorted(os.listdir(directory)): #opening csv files to dictionaries
     path=os.path.join(directory,file)
     df = pandas.read_csv(path,index_col=1)
     print('File read: %s'%file)
