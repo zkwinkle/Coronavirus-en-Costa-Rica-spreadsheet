@@ -10,6 +10,8 @@ from pprint import pprint
 import os
 import pandas
 
+os.chdir(os.path.dirname(os.path.realpath(__file__)))
+
 #Hooking up to sheets:
 scope = ["https://spreadsheets.google.com/feeds",'https://www.googleapis.com/auth/spreadsheets',"https://www.googleapis.com/auth/drive.file","https://www.googleapis.com/auth/drive"]
 creds = ServiceAccountCredentials.from_json_keyfile_name("creds.json", scope)
@@ -138,7 +140,7 @@ update_dataSheet()
 
 
 print("Updated! Last date added: "+sheet.acell('A2').value)
-print("\nPress enter to exit...")
-input()
+#print("\nPress enter to exit...")
+#input()
 
 
